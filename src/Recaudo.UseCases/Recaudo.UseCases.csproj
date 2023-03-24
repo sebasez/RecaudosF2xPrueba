@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Recaudo.DTOs\Recaudo.DTOs.csproj" />
+    <ProjectReference Include="..\Recaudo.Entities\Recaudo.Entities.csproj" />
+    <ProjectReference Include="..\Recaudo.UseCasesPorts\Recaudo.UseCasesPorts.csproj" />
+  </ItemGroup>
+
+</Project>
