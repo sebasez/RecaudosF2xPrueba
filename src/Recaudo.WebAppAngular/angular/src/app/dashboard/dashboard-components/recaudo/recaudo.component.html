@@ -1,0 +1,41 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Recaudo</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered align-middle text-nowrap">
+                <thead>
+                    <tr>
+                        <th class="text-dark font-medium fs-4">Estacion</th>
+                        <th class="text-dark font-medium fs-4">Sentido</th>
+                        <th class="text-dark font-medium fs-4">Hora</th>
+                        <th class="text-dark font-medium fs-4">Fecha</th>
+                        <th class="text-dark font-medium fs-4">Categoria</th>
+                        <th class="text-dark font-medium fs-4">ValorTabulado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let item of datosRecaudo'>
+                        <td>
+                            {{ item.estacion }}
+                        </td>
+                        <td>
+                            {{ item.sentido }}
+                        </td>
+                        <td>
+                            {{ item.hora }}
+                        </td>
+                        <td>
+                            {{ item.fecha }}
+                        </td>
+                        <td>
+                            {{ item.categoria }}
+                        </td>
+                        <td>
+                            {{ item.valorTabulado }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

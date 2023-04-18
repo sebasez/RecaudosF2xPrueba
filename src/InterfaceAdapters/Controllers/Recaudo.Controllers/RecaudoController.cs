@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Recaudo.DTOs;
 using Recaudo.Presenters;
-using Recaudo.UseCasesPorts.ConteoVehiculoPorts;
+using Recaudo.UseCasesPorts.RecaudoVehiculoPorts;
 
 namespace Recaudo.Controllers
 {
@@ -9,19 +9,19 @@ namespace Recaudo.Controllers
     [ApiController]
     public class RecaudoController
     {
-        private readonly IGetConteoVehiculosInputPort _inputPort;
-        private readonly IGetConteoVehiculosOutputPort _outputPort;
-        public RecaudoController(IGetConteoVehiculosInputPort inputPort, IGetConteoVehiculosOutputPort outputPort)
+        private readonly IGetRecaudoVehiculosInputPort _inputPort;
+        private readonly IGetRecaudoVehiculosOutputPort _outputPort;
+        public RecaudoController(IGetRecaudoVehiculosInputPort inputPort, IGetRecaudoVehiculosOutputPort outputPort)
         {
             _inputPort = inputPort;
             _outputPort = outputPort;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<ConteoVehiculoDTO>> Get()
+        public async Task<IEnumerable<RecaudoVehiculoDTO>> Get()
         {
             await _inputPort.Handle();
-            return ((IPresenter<IEnumerable<ConteoVehiculoDTO>>)_outputPort).Content;
+            return ((IPresenter<IEnumerable<RecaudoVehiculoDTO>>)_outputPort).Content;
         }
     }
 }

@@ -27,7 +27,7 @@ namespace Recaudo.Repository.Repositories
 
         public async Task<IEnumerable<ConteoVehiculo>> GetConteoVehiculos()
         {
-            return await _context.ConteoVehiculos.ToListAsync();
+            return await _context.ConteoVehiculos.Take(10).ToListAsync();
         }
 
         public async Task<DateTime?> GetFechaMaximaGuardada()

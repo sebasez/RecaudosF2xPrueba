@@ -32,7 +32,7 @@ namespace Recaudos.WebApi
                 .UseSimpleAssemblyNameTypeSerializer()
                 .UseRecommendedSerializerSettings()
                 );
-
+            builder.Services.AddCors();
 
             //builder.Services.AddHangfire(x => x.UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddHangfireServer();
@@ -50,6 +50,13 @@ namespace Recaudos.WebApi
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyOrigin(); // Permite cualquier origen
+                builder.AllowAnyMethod(); // Permite cualquier método HTTP
+                builder.AllowAnyHeader(); // Permite cualquier encabezado HTTP
+            });
+
             app.UseHangfireDashboard();
             app.UseHttpsRedirection();
 

@@ -36,7 +36,7 @@ namespace Recaudo.Repository.Repositories
 
         public async Task<IEnumerable<RecaudoVehiculo>> GetRecaudoVehiculos()
         {
-            return await _context.RecaudoVehiculos.ToListAsync();
+            return await _context.RecaudoVehiculos.Take(10).ToListAsync();
         }
     }
 }

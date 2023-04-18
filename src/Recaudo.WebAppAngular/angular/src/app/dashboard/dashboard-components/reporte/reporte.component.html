@@ -1,0 +1,90 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Recaudo</h4>
+
+    <div class="row mb-3">
+      <div class="col">
+        <label for="fechaInicio">Fecha de inicio:</label>
+        <input type="date" id="fechaInicio" [(ngModel)]="fechaInicio" />
+      </div>
+      <div class="col">
+        <label for="fechaFin">Fecha de fin:</label>
+        <input type="date" id="fechaFin" [(ngModel)]="fechaFin" />
+      </div>
+      <div class="col">
+        <button type="button" (click)="filtrar()" class="btn btn-success">
+          Generar Reporte
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col" *ngFor="let item of datosReporte">
+        <table class="table table-bordered align-middle text-nowrap">
+          <thead>
+            <tr>
+              <th colspan="3" class="text-dark font-medium fs-4">
+                {{ item.estacion }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>
+                {{ item.fecha }}
+              </th>
+              <td>
+                {{ item.cantidad }}
+              </td>
+              <td>
+                {{ item.valor | currency }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row mb-3">
+        <label for="inputEmail3" class="col-sm-2 col-form-label"
+          >Total Cantidades</label
+        >
+        <div class="col-sm-10">
+          {{ sumarCantidad(datosReporte) }}
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label"
+          >Total Valores</label
+        >
+        <div class="col-sm-10">
+          {{ sumarValor(datosReporte) | currency }}
+        </div>
+      </div>
+
+      <!-- <table class="table table-bordered align-middle text-nowrap">
+        <thead>
+          <tr>
+            <th class="text-dark font-medium fs-4">Estacion</th>
+            <th class="text-dark font-medium fs-4">Fecha</th>
+            <th class="text-dark font-medium fs-4">Cantidad</th>
+            <th class="text-dark font-medium fs-4">Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of datosReporte">
+            <td>
+              {{ item.estacion }}
+            </td>
+            <td>
+              {{ item.fecha }}
+            </td>
+            <td>
+              {{ item.cantidad }}
+            </td>
+            <td>
+              {{ item.valor }}
+            </td>
+          </tr>
+        </tbody>
+      </table> -->
+    </div>
+  </div>
+</div>
