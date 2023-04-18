@@ -1,4 +1,4 @@
-# Prueba de fulstack
+# Prueba de fullstack
 ## _Sebastian Gomez_
 
 Crear la base de datos "RecaudoVehiculos" con usuario "prueba" y password "prueba", teniendo en cuenta que se debe hacer cambio del motor de base de datos.
