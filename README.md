@@ -21,3 +21,5 @@ para la ejecución de la consulta de los datos del servidor externo se puede rea
 https://localhost:puerto/api/Proceso
 y para detenerlo con la siguiente url
 https://localhost:puerto/api/Proceso/Detener
+
+El proyecto de angular esta en esta carpeta /Recaudo.WebAppAngular/angular
