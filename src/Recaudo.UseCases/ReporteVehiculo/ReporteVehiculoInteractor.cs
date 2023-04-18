@@ -20,8 +20,7 @@ namespace Recaudo.UseCases.ReporteVehiculo
         public async Task Handle(DateTime fachaInicio, DateTime fechaFin)
         {
             var listDatosReporte = await _repository.GetReporte(fachaInicio, fechaFin);
-
-            var reporte = from conteo in listDatosReporte.Item1
+            var reporteEnBruto = (from conteo in listDatosReporte.Item1
                           join recaudo in listDatosReporte.Item2 on conteo.Estacion equals recaudo.Estacion
                           select new ReporteRecaudoDTO()
                           {
@@ -29,7 +28,17 @@ namespace Recaudo.UseCases.ReporteVehiculo
                               Cantidad = conteo.Cantidad,
                               Fecha = conteo.Fecha,
                               Valor = recaudo.ValorTabulado
-                          };
+                          }).ToList();
+
+            var reporte = reporteEnBruto.GroupBy(x =>new  { x.Estacion, x.Fecha })
+                .Select(x => new ReporteRecaudoDTO()
+                {
+                    Estacion = x.Key.Estacion,
+                    Cantidad = x.Sum(it=>it.Cantidad),
+                    Fecha = x.Key.Fecha,
+                    Valor = x.Sum(it=>it.Valor)
+                }).ToList();
+
 
             await _outputPort.Handle(_mapper.Map<IEnumerable<ReporteRecaudoDTO>>(reporte));
         }
