@@ -5,8 +5,10 @@ using Recaudo.UseCases.AddReporteVehiculo;
 using Recaudo.UseCases.GetConteoVehiculo;
 using Recaudo.UseCases.GetReporteVehiculo;
 using Recaudo.UseCases.Mappings;
+using Recaudo.UseCases.ProcesoDatos;
 using Recaudo.UseCases.ReporteVehiculo;
 using Recaudo.UseCasesPorts.ConteoVehiculoPorts;
+using Recaudo.UseCasesPorts.ProcesarDatosPorts;
 using Recaudo.UseCasesPorts.RecaudoVehiculoPorts;
 using Recaudo.UseCasesPorts.ReporteRecaudoPosts;
 
@@ -29,6 +31,7 @@ namespace Recaudo.UseCases
             services.AddTransient<IAddRecaudoVehiculosInputPort, AddRecaudoVehiculoInteractor>();
             services.AddTransient<IGetRecaudoVehiculosInputPort, GetRecaudoVehiculoInteractor>();
             services.AddTransient<IGetReporteRecaudoInputPort, ReporteVehiculoInteractor>();
+            services.AddTransient<IProcesoDatosInputPort, ProcesarDataInteractor>();
 
             return services;
         }

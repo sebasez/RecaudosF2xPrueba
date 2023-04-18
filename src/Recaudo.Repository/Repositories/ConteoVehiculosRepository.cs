@@ -16,6 +16,15 @@ namespace Recaudo.Repository.Repositories
             await _context.AddAsync(conteoVehiculo);
         }
 
+        public async Task AddConteoVehiculos(IEnumerable<ConteoVehiculo> conteoVehiculos)
+        {
+            foreach (ConteoVehiculo item in conteoVehiculos)
+            {
+                item.Fecha = item.Fecha.Date + new TimeSpan(item.Hora, 0, 0);
+            }
+            await _context.AddRangeAsync(conteoVehiculos);
+        }
+
         public async Task<IEnumerable<ConteoVehiculo>> GetConteoVehiculos()
         {
             return await _context.ConteoVehiculos.ToListAsync();
@@ -23,6 +32,9 @@ namespace Recaudo.Repository.Repositories
 
         public async Task<DateTime?> GetFechaMaximaGuardada()
         {
+            var entity = _context.ConteoVehiculos.FirstOrDefault();
+            if (entity == null)
+                return null;
             return await _context.ConteoVehiculos.MaxAsync(it => it.Fecha);
         }
     }

@@ -3,11 +3,11 @@ using Recaudo.DTOs;
 using Recaudo.Presenters;
 using Recaudo.UseCasesPorts.ReporteRecaudoPosts;
 
-namespace Recaudo.WebAppAngular.Controllers
+namespace Recaudo.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class ReporteController : ControllerBase
+    public class ReporteController 
     {
         private readonly IGetReporteRecaudoInputPort _inputPort;
         private readonly IGetReporteRecaudoOutputPort _outputPort;
@@ -17,11 +17,11 @@ namespace Recaudo.WebAppAngular.Controllers
             _outputPort = outputPort;
         }
 
-        [HttpGet]
-        public async Task<ReporteRecaudoDTO> Get(GetReporteRecaudoDTO reporte)
+        [HttpPost]
+        public async Task<IEnumerable<ReporteRecaudoDTO>> Get(GetReporteRecaudoDTO reporte)
         {
             await _inputPort.Handle(reporte.FechaInicio, reporte.FechaFin);
-            return ((IPresenter<ReporteRecaudoDTO>)_outputPort).Content;
+            return ((IPresenter<IEnumerable<ReporteRecaudoDTO>>)_outputPort).Content;
         }
     }
 }

@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\InterfaceAdapters\Middleware\Recaudo.ConsultaRecaudo\Recaudo.ConsultaRecaudo.csproj" />
     <ProjectReference Include="..\Recaudo.Presenters\Recaudo.Presenters.csproj" />
     <ProjectReference Include="..\Recaudo.Repository\Recaudo.Repository.csproj" />
     <ProjectReference Include="..\Recaudo.UseCases\Recaudo.UseCases.csproj" />

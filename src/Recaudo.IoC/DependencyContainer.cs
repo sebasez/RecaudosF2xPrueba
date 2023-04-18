@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Recaudo.ConsultaRecaudo;
 using Recaudo.Presenters;
 using Recaudo.Repository;
 using Recaudo.UseCases;
@@ -13,6 +14,7 @@ namespace Recaudo.IoC
             services.AddRepositories(configuration);
             services.AddUseCasesServices();
             services.AddPresenters();
+            services.AddServices();
             return services;
         }
     }

@@ -24,7 +24,11 @@ namespace Recaudo.ConsultaRecaudo
             };
             request.AddBody(user, ContentType.Json);
             var result = await _client.ExecuteAsync(request);
-            LoginResponse tokenResponse = JsonSerializer.Deserialize<LoginResponse>(json: result.Content);
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+            LoginResponse tokenResponse = JsonSerializer.Deserialize<LoginResponse>(json: result.Content, options);
             return tokenResponse;
         }
 

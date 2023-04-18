@@ -13,6 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Recaudo.Presenters\Recaudo.Presenters.csproj" />
+    <ProjectReference Include="..\..\..\Recaudo.UseCasesPorts\Recaudo.UseCasesPorts.csproj" />
     <ProjectReference Include="..\..\Middleware\Recaudo.ConsultaRecaudo\Recaudo.ConsultaRecaudo.csproj" />
   </ItemGroup>
 
